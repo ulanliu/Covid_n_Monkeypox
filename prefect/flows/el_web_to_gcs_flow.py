@@ -41,7 +41,7 @@ def load_data_to_gcs(path: Path) -> None:
     """
     Load the data into GCS
     """
-    gcs_block = GcsBucket.load("zoomcamp-2")
+    gcs_block = GcsBucket.load("zoomcamp")
     gcs_block.upload_from_path(from_path=path, to_path=path)
     gcs_path = path
     return gcs_path
@@ -51,7 +51,7 @@ def load_data_to_bq(gcs_path: Path):
     """
     Transfer data from GCS to BQ
     """
-    gcp_credentials_block = GcpCredentials.load("zoomcamp-2")
+    gcp_credentials_block = GcpCredentials.load("zoomcamp")
     
     if 'monkeypox' in str(gcs_path):
         table_name = 'monkeypox'
