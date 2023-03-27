@@ -7,4 +7,6 @@ pyarrow==10.0.1
 pandas-gbq==0.18.1
 psycopg2-binary==2.9.5
 sqlalchemy==1.4.46
-dbt-bigquery
+dbt-core==1.4.5
+dbt-bigquery==1.4.3
+prefect-dbt[bigquery]

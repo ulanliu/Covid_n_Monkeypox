@@ -7,6 +7,6 @@ sources:
 
     tables:
       - name: monkeypox
-      - name: covid-19
+      - name: covid19
 
 
