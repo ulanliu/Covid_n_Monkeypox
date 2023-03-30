@@ -40,13 +40,13 @@ def load_data_to_gcs(path: Path) -> str:
     """
     Load the data into GCS and return the GCS path
     """
-    gcs_block = GcsBucket.load("zoomcamp")
+    gcs_block = GcsBucket.load("zoomcamp") # Use the block name you created
     gcs_block.upload_from_path(from_path=path, to_path=path)
 
     if 'monkeypox' in str(path):
-        table_name = 'monkeypox'
+        table_name = 'monkeypox' # change the name if you want
     if 'covid' in str(path):
-        table_name = 'covid19'
+        table_name = 'covid19' # change the name if you want
     day = date.today().strftime('%Y%m%d')
     gcs_path = f'gs://dtc_who_data_lake_de-zoomcamp-378315/data/{table_name}_{day}.csv'
 

@@ -7,6 +7,9 @@ from prefect_gcp import GcpCredentials
 from prefect_gcp.cloud_storage import GcsBucket
 
 def main(params):
+    """
+    Create prefect blocks
+    """
     service_account_file = params.service_account_file
     gcp_credentials_block_name = params.gcp_credentials_block_name
     gcs_bucket_name = params.gcs_bucket_name

@@ -10,10 +10,10 @@ This project is related to covid-19 and monkeypox diseases. Which area has highe
 
 ## Dataset
 
-The data resource is form [Our World in Data](https://github.com/owid)
+The data resource is form [Our World in Data](https://github.com/owid).
 
-### who_disease
 ```
+who_disease  
 	|- **location** string
 	|- **iso_code** string
 	|- **date** string
@@ -69,7 +69,8 @@ The data resource is form [Our World in Data](https://github.com/owid)
 Please follow this [note](https://github.com/ziritrion/dataeng-zoomcamp/blob/main/notes/1_intro.md#user-content-gcp-initial-setup).
   
 If you have problems setting up the env, you can create a virtual machine for this project.  
-Please follow this video and only need to follow these part:  
+
+Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb) and only need to follow these parts:  
 - Generating SSH keys
 - Creating a virtual machine on GCP
 - Connecting to the VM with SSH
@@ -80,12 +81,87 @@ Please follow this video and only need to follow these part:
   
 ## Reproduction steps
 
-1. Fork this repo
+1. Initial setup  
 
-2. Clone your folked repo
-```
-git clone <your-repo-url>
-cd DE_ZOOMCAMP_PROJECT
-```
+	1. Fork this repo
 
-3. 
+	2. Clone your folked repo
+	```
+	git clone <your-repo-url>
+	cd DE_ZOOMCAMP_PROJECT
+	```
+
+	3. Create env with conda and activate
+	```
+	conda create -n <env_name> python=3.9
+	```
+	```
+	conda activate <env_name>
+	```
+
+	4. Install required libraries
+	```
+	pip install -r requirements.txt
+	```
+
+	5. Navigate to `terraform` folder, fill in the blanks in `variables.tf` and then init terraform
+	```
+	terraform init
+	```
+
+	6. Plan the infrastructure
+	```
+	terraform plan
+	```
+
+	7. Apply the changes
+	```
+	terraform apply
+	```
+	The google cloud storage and bigquery dataset should be created.
+
+	8. Create a `profiles.yml` file in `~/.dbt`
+	```
+	mkdir ~/.dbt
+	cd ~/.dbt
+	```
+	profiles.yml
+	```
+	bq-dbt-who:
+		outputs:
+			dev:
+				dataset: dbt_who_data
+				fixed_retries: 1
+				keyfile: <google credentials json file>
+				location: US
+				method: service-account
+				priority: interactive
+				project: <GCP project id>
+				threads: 4
+				timeout_seconds: 300
+				type: bigquery
+	```
+2. Deployment  
+
+	1. Navigate to `prefect` folder and start prefect server
+	```
+	prefect orion start
+	```
+
+	2. Create prefect blocks via `google_cloud.py`
+	```
+	python blocks/google_cloud.py \
+		--service_account_file=<path for gcp_credentials_file> \
+		--gcp_credentials_block_name=<name for gcp_credentials_block> \ 
+		--gcs_bucket_name=<name for bucket_name> \
+		--gcs_bucket_block_name=<name for gcs_bucket_block_name>
+	```
+	> default gcp_credentials_block and gcs_bucket_block_name are "zoomcamp". 
+	> If you set the different name, remember to change the block name in flow.
+
+	3. Add directory which `dbt` exist to `$PATH` environment variable, please check `prefect_dbt_flow.py`
+  
+	4. Deploy the flow
+	```
+	prefect deployment build flows/elt_parent_flow.py:elt_parent_flow --cron "5 8 * * *" -a
+	```
