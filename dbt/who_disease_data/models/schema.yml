@@ -9,4 +9,62 @@ sources:
       - name: monkeypox
       - name: covid19
 
+models:
+  - name: who_disease_model
+    description: >
+      This model merge the monkeypox and covid19 table. 
+      These two datasets are collected and maintained by Our World in Data.
+    columns: 
+      - name: location
+        description: Geographical location
 
+      - name: iso_code
+        description: > 
+          ISO 3166-1 alpha-3 – three-letter country codes. 
+          Note that OWID-defined regions (e.g. continents like 'Europe') contain prefix 'OWID_'.
+
+      - name: date
+        description: Date of observation
+
+      - name: total_cases
+        description: Total confirmed cases of disease (follow disease_type). Counts can include probable cases, where reported.
+
+      - name: total_deaths
+        description: Total deaths attributed to disease (follow disease_type). Counts can include probable deaths, where reported.
+
+      - name: new_cases
+        description: >
+          New confirmed cases of disease (follow disease_type). Counts can include probable cases, where reported. 
+          In rare cases where our source reports a negative daily change due to a data correction, we set this metric to NA.
+
+      - name: new_deaths
+        description: >
+          New deaths attributed to disease (follow disease_type). Counts can include probable deaths, where reported. 
+          In rare cases where our source reports a negative daily change due to a data correction, we set this metric to NA.
+
+      - name: new_cases_smoothed
+        description: New confirmed cases of disease (follow disease_type) (7-day smoothed). Counts can include probable cases, where reported.
+
+      - name: new_deaths_smoothed
+        description: New deaths attributed to disease (follow disease_type) (7-day smoothed). Counts can include probable deaths, where reported.
+
+      - name: new_cases_per_million
+        description: New confirmed cases of disease (follow disease_type) per 1,000,000 people. Counts can include probable cases, where reported.
+
+      - name: total_cases_per_million
+        description: Total confirmed cases of disease (follow disease_type) per 1,000,000 people. Counts can include probable cases, where reported.
+
+      - name: new_cases_smoothed_per_million
+        description: New confirmed cases of disease (follow disease_type) (7-day smoothed) per 1,000,000 people. Counts can include probable cases, where reported.
+
+      - name: new_deaths_per_million
+        description: New deaths attributed to disease (follow disease_type) per 1,000,000 people. Counts can include probable deaths, where reported.
+
+      - name: total_deaths_per_million
+        description: Total deaths attributed to disease (follow disease_type) per 1,000,000 people. Counts can include probable deaths, where reported.
+
+      - name: new_deaths_smoothed_per_million
+        description: New deaths attributed to disease (follow disease_type) (7-day smoothed) per 1,000,000 people. Counts can include probable deaths, where reported.
+
+      - name: disease_type
+        description: The disease type of this record.
