@@ -14,33 +14,22 @@ The data resource is form [Our World in Data](https://github.com/owid).
 
 ```
 who_disease  
-	|- **location** string
-	|- **iso_code** string
-	|- **date** string
-	|- **monkeypox_total_cases** float
-	|- **monkeypox_total_deaths** float
-	|- **monkeypox_new_cases** float
-	|- **monkeypox_new_deaths** float
-	|- **monkeypox_new_cases_smoothed** float
-	|- **monkeypox_new_deaths_smoothed** float
-	|- **monkeypox_new_cases_per_million** float
-	|- **monkeypox_total_cases_per_million** float
-	|- **monkeypox_new_cases_smoothed_per_million** float
-	|- **monkeypox_new_deaths_per_million** float
-    |- **monkeypox_total_deaths_per_million** float
-	|- **monkeypox_new_deaths_smoothed_per_million** float
-    |- **covid19_total_cases** float
-	|- **covid19_total_deaths** float
-    |- **covid19_new_cases** float
-	|- **covid19_new_deaths** float
-    |- **covid19_new_cases_smoothed** float
-	|- **covid19_new_deaths_smoothed** float
-    |- **covid19_new_cases_per_million** float
-	|- **covid19_total_cases_per_million** float
-    |- **covid19_new_cases_smoothed_per_million** float
-	|- **covid19_new_deaths_per_million** float
-    |- **covid19_total_deaths_per_million** float
-	|- **covid19_new_deaths_smoothed_per_million** float
+	|- location string
+	|- iso_code string
+	|- date string
+	|- total_cases float
+	|- total_deaths float
+	|- new_cases float
+	|- new_deaths float
+	|- new_cases_smoothed float
+	|- new_deaths_smoothed float
+	|- new_cases_per_million float
+	|- total_cases_per_million float
+	|- new_cases_smoothed_per_million float
+	|- new_deaths_per_million float
+    |- total_deaths_per_million float
+	|- new_deaths_smoothed_per_million float
+	|- disease_type string
 ```
 
 ## Technologies
@@ -86,12 +75,14 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 	1. Fork this repo
 
 	2. Clone your folked repo
+
 	```
 	git clone <your-repo-url>
 	cd DE_ZOOMCAMP_PROJECT
 	```
 
 	3. Create env with conda and activate
+
 	```
 	conda create -n <env_name> python=3.9
 	```
@@ -100,27 +91,32 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 	```
 
 	4. Install required libraries
+
 	```
 	pip install -r requirements.txt
 	```
 
 	5. Navigate to `terraform` folder, fill in the blanks in `variables.tf` and then init terraform
+
 	```
 	terraform init
 	```
-
+  
 	6. Plan the infrastructure
+
 	```
 	terraform plan
 	```
-
+  
 	7. Apply the changes
+
 	```
 	terraform apply
 	```
 	The google cloud storage and bigquery dataset should be created.
 
 	8. Create a `profiles.yml` file in `~/.dbt`
+
 	```
 	mkdir ~/.dbt
 	cd ~/.dbt
@@ -140,15 +136,18 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 				threads: 4
 				timeout_seconds: 300
 				type: bigquery
-	```
+	```  
+
 2. Deployment  
 
 	1. Navigate to `prefect` folder and start prefect server
+
 	```
 	prefect orion start
 	```
 
 	2. Create prefect blocks via `google_cloud.py`
+
 	```
 	python blocks/google_cloud.py \
 		--service_account_file=<path for gcp_credentials_file> \
@@ -156,12 +155,24 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 		--gcs_bucket_name=<name for bucket_name> \
 		--gcs_bucket_block_name=<name for gcs_bucket_block_name>
 	```
-	> default gcp_credentials_block and gcs_bucket_block_name are "zoomcamp". 
+	> Default gcp_credentials_block and gcs_bucket_block_name are "zoomcamp". 
 	> If you set the different name, remember to change the block name in flow.
 
 	3. Add directory which `dbt` exist to `$PATH` environment variable, please check `prefect_dbt_flow.py`
   
-	4. Deploy the flow
+	4. Deploy the flow and run
+
 	```
-	prefect deployment build flows/elt_parent_flow.py:elt_parent_flow --cron "5 8 * * *" -a
+	prefect deployment build flows/elt_parent_flow.py:elt_parent_flow -n "elt_master_flow" --cron "5 8 * * *" -a
 	```
+	```
+	prefect deployment run elt_master_flow
+	```
+
+3. Visualization - Looker
+
+	1. Create a blank report in [Looker](https://lookerstudio.google.com/u/1/navigation/reporting)
+	> The google account used for looker need to be same with GCP account
+
+	2. Connect the google bigqeury table
+	
