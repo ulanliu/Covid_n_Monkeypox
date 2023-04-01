@@ -139,6 +139,7 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 		  threads: 4
 		  timeout_seconds: 300
 		  type: bigquery
+	  target: dev
 	```  
 
 2. Deployment  
