@@ -118,15 +118,17 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 	```
 	The google cloud storage and bigquery dataset should be created.
 
-	8. Create a `profiles.yml` file in `~/.dbt`
+	8. Set up a `profiles.yml` file in `~/.dbt`
   
 	```bash
 	mkdir ~/.dbt
 	cd ~/.dbt
 	```
 	profiles.yml
+	
 	```yaml
 	bq-dbt-who:
+	  target: dev
 	  outputs:
 	    dev:
 		  dataset: dbt_who_data
@@ -139,8 +141,7 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 		  threads: 4
 		  timeout_seconds: 300
 		  type: bigquery
-	  target: dev
-	```  
+	```
 
 2. Deployment  
 
