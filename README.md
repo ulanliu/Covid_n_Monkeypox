@@ -9,7 +9,7 @@ The dashboard:
   
 ## Problem description
 
-This project is related to covid-19 and monkeypox diseases. Which area has highest prevalence rate? Does the high covid-19 prevalence rate also have high monkeypox prevalence rate? How is the case fatality rate between covid-19 and monkeypox.
+This project is related to covid-19 and monkeypox diseases. ​​Which area has the highest prevalence rate? Does a high covid-19 prevalence rate area also have a high monkeypox prevalence rate? How is the case fatality rate between covid-19 and monkeypox?
 
 ## Dataset
 
