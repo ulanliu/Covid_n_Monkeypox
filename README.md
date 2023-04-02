@@ -4,7 +4,7 @@
 
 This project was executed as a part of the Data Engineering Zoomcamp course held by [DataTalks.Club](https://github.com/DataTalksClub/data-engineering-zoomcamp). The goal of this project is to apply everything we learned in this course and build an end-to-end data pipeline and a visualized dashboard.
   
-The dashboard:
+The dashboard:  
 ![Looker](image/de-looker-dashboard.png)
   
 ## Problem description
@@ -192,5 +192,5 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 ## Reference
 1. [DataTalksClub](https://github.com/DataTalksClub/data-engineering-zoomcamp)
 2. [Note from Alvaro Navas](https://github.com/ziritrion/dataeng-zoomcamp/blob/main/notes/1_intro.md#user-content-gcp-initial-setup)
-3. [How to run a Prefect 2 agent as a systemd service on Linux](https://discourse.prefect.io/t/how-to-run-a-prefect-2-agent-as-a-systemd-service-on-linux/1450)
+3. [How to run a Prefect 2 agent as a systemd service on Linux](https://discourse.prefect.io/t/how-to-run-a-prefect-2-agent-as-a-systemd-service-on-linux/1450)  
 If you want to keep your prefect agent running.
