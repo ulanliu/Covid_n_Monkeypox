@@ -3,7 +3,7 @@ from prefect_dbt.cli.commands import trigger_dbt_cli_command
 import os 
 
 # Change path where dbt installed to os.environ["PATH"]
-patched_path_env = "/home/ulan/anaconda3/envs/zoomcamp/bin:{}".format(os.environ["PATH"])
+patched_path_env = "/Users/peter/opt/anaconda3/envs/de-project/bin:{}".format(os.environ["PATH"])
 os.environ["PATH"] = patched_path_env
 
 @flow(retries=3)
