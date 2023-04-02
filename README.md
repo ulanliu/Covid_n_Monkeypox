@@ -118,7 +118,9 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 	```
 	The google cloud storage and bigquery dataset should be created.
 
-	8. Set up a `profiles.yml` file in `~/.dbt`
+2. dbt set up
+
+	1. Set up a `profiles.yml` file in `~/.dbt`
   
 	```bash
 	mkdir ~/.dbt
@@ -143,7 +145,9 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
           type: bigquery
 	```
 
-2. Deployment  
+	2. Fill in the blank in `dbt/who_disease_data/models/schema.yml`
+
+3. Deployment  
 
 	1. Navigate to `prefect` folder and start prefect server
   
@@ -181,6 +185,12 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 
 	3. Create the charts you want
 
-## Troubleshouting
+## Troubleshooting
 
 1. If flow can't find dbt command, add directory which `dbt` exist to `$PATH` environment variable, please check `prefect_dbt_flow.py`
+
+## Reference
+1. [DataTalksClub](https://github.com/DataTalksClub/data-engineering-zoomcamp)
+2. [Note from Alvaro Navas](https://github.com/ziritrion/dataeng-zoomcamp/blob/main/notes/1_intro.md#user-content-gcp-initial-setup)
+3. [How to run a Prefect 2 agent as a systemd service on Linux](https://discourse.prefect.io/t/how-to-run-a-prefect-2-agent-as-a-systemd-service-on-linux/1450)
+If you want to keep your prefect agent running.
