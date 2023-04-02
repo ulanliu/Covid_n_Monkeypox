@@ -127,20 +127,20 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 	profiles.yml
 	
 	```yaml
-	bq-dbt-who:
-		target: dev
-		outputs:
-			dev:
-				dataset: dbt_who_data
-				fixed_retries: 1
-				keyfile: <google credentials json file>
-				location: US
-				method: service-account
-				priority: interactive
-				project: <GCP project id>
-				threads: 4
-				timeout_seconds: 300
-				type: bigquery
+    bq-dbt-who:
+      target: dev
+      outputs:
+        dev:
+          dataset: dbt_who_data
+          fixed_retries: 1
+          keyfile: <google credentials json file>
+          location: US
+          method: service-account
+          priority: interactive
+          project: <GCP project id>
+          threads: 4
+          timeout_seconds: 300
+          type: bigquery
 	```
 
 2. Deployment  
