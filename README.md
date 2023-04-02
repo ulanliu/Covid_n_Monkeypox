@@ -126,7 +126,7 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 	```
 	profiles.yml
 	
-	```yaml
+```yaml
 	bq-dbt-who:
 	  target: dev
 	  outputs:
@@ -141,7 +141,7 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 		  threads: 4
 		  timeout_seconds: 300
 		  type: bigquery
-	```
+```
 
 2. Deployment  
 
