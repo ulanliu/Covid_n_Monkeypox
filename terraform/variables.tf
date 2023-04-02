@@ -4,7 +4,7 @@ locals {
 
 variable "project" {
   description = "Your GCP Project ID"
-  default = "de-zoomcamp-378315"
+  default = "<your gcp project id>"
 }
 
 variable "region" {
@@ -21,5 +21,5 @@ variable "storage_class" {
 variable "BQ_DATASET" {
   description = "BigQuery Dataset that raw data (from GCS) will be written to"
   type = string
-  default = "who_disease_data_var2"
+  default = "who_disease_data"
 }

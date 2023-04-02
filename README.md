@@ -1,8 +1,8 @@
-# DE zoomcamp Project - Covid-19 and Monkeypox number by Country
+# Comparison between Covid-19 and Monkeypox Cases
 
 ## Overview
 
-This project was executed as a part of the Data Engineering Zoomcamp course held by DataTalks.Club. The goal of this project is to apply everything we learned in this course and build an end-to-end data pipeline.
+This project was executed as a part of the Data Engineering Zoomcamp course held by [DataTalks.Club](https://github.com/DataTalksClub/data-engineering-zoomcamp). The goal of this project is to apply everything we learned in this course and build an end-to-end data pipeline and a visualized dashboard.
   
 The dashboard:
 ![Looker](image/de-looker-dashboard.png)
@@ -128,19 +128,19 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 	
 	```yaml
 	bq-dbt-who:
-	  target: dev
-	  outputs:
-	    dev:
-		  dataset: dbt_who_data
-		  fixed_retries: 1
-		  keyfile: <google credentials json file>
-		  location: US
-		  method: service-account
-		  priority: interactive
-		  project: <GCP project id>
-		  threads: 4
-		  timeout_seconds: 300
-		  type: bigquery
+		target: dev
+		outputs:
+			dev:
+				dataset: dbt_who_data
+				fixed_retries: 1
+				keyfile: <google credentials json file>
+				location: US
+				method: service-account
+				priority: interactive
+				project: <GCP project id>
+				threads: 4
+				timeout_seconds: 300
+				type: bigquery
 	```
 
 2. Deployment  
@@ -156,22 +156,20 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 	```bash
 	python blocks/google_cloud.py \
 		--service_account_file=<path for gcp_credentials_file> \
-		--gcp_credentials_block_name=<name for gcp_credentials_block> \ 
+		--gcp_credentials_block_name=<name for gcp_credentials_block> \
 		--gcs_bucket_name=<name for bucket_name> \
 		--gcs_bucket_block_name=<name for gcs_bucket_block_name>
 	```
 	> Default gcp_credentials_block and gcs_bucket_block_name are "zoomcamp". 
 	> If you set the different name, remember to change the block name in flow.
-
-	3. Add directory which `dbt` exist to `$PATH` environment variable, please check `prefect_dbt_flow.py`
   
-	4. Deploy the flow and run
+	3. Deploy the flow and run
 
 	```bash
-	prefect deployment build flows/elt_parent_flow.py:elt_parent_flow -n "elt_master_flow" --cron "5 8 * * *" -a
+	prefect deployment build flows/elt_parent_flow.py:elt_parent_flow -n "who_elt_deployment" --cron "5 8 * * *" -a
 	```
 	```bash
-	prefect deployment run elt_master_flow
+	prefect deployment run elt_parent_flow/who_elt_deployment
 	```
 
 3. Visualization - Looker
@@ -181,3 +179,8 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 
 	2. Connect the google bigqeury table
 
+	3. Create the charts you want
+
+## Troubleshouting
+
+1. If flow can't find dbt command, add directory which `dbt` exist to `$PATH` environment variable, please check `prefect_dbt_flow.py`
