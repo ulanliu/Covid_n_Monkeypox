@@ -177,6 +177,11 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 	prefect deployment run elt_parent_flow/who_elt_deployment
 	```
 
+	4. Start the prefect agent
+	```bash
+	prefect agent start -q "default"
+	```
+
 3. Visualization - Looker
 
 	1. Create a blank report in [Looker](https://lookerstudio.google.com/u/1/navigation/reporting)
