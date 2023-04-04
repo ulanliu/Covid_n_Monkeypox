@@ -172,6 +172,7 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 	```bash
 	prefect deployment build flows/elt_parent_flow.py:elt_parent_flow -n "who_elt_deployment" --cron "5 8 * * *" -a
 	```
+	> You can adjust the cron argument.
 	```bash
 	prefect deployment run elt_parent_flow/who_elt_deployment
 	```
@@ -179,7 +180,7 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 3. Visualization - Looker
 
 	1. Create a blank report in [Looker](https://lookerstudio.google.com/u/1/navigation/reporting)
-	> The google account used for looker need to be same with GCP account
+	> The google account used for looker need to be same with GCP account.
 
 	2. Connect the google bigqeury table
 
