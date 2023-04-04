@@ -4,7 +4,7 @@
 
 This project was executed as a part of the Data Engineering Zoomcamp course held by [DataTalks.Club](https://github.com/DataTalksClub/data-engineering-zoomcamp). The goal of this project is to apply everything we learned in this course and build an end-to-end data pipeline and a visualized dashboard.
   
-The dashboard:  
+The [dashboard](https://lookerstudio.google.com/reporting/b50954f0-11ae-4314-b0fa-9ce222f517a6):    
 ![Looker](image/de-looker-dashboard.png)
   
 ## Problem description
@@ -52,9 +52,9 @@ who_disease
 
 ## Prequisites
 
-- Python 3 (installed with Anaconda)
-- Google Cloud SDK
-- Terraform
+- Python 3 (installed with Anaconda): https://www.anaconda.com
+- Google Cloud SDK: https://cloud.google.com/sdk/docs/install-sdk
+- Terraform: https://developer.hashicorp.com/terraform/downloads
 
 ## GCP setup
 
