@@ -81,7 +81,7 @@ Please follow this [video](https://www.youtube.com/watch?v=ae-CV2KfoN0&list=PL3M
 
 	```bash
 	git clone <your-repo-url>
-	cd DE_ZOOMCAMP_PROJECT
+	cd Covid_n_Monkeypox
 	```
 
 	3. Create env with conda and activate
